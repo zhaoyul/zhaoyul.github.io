@@ -3,12 +3,30 @@ layout: default
 title: 首页
 ---
 
-<h2>最新文章</h2>
+<section class="hero">
+  <div class="hero-label">Blog</div>
+  <h1>记录代码与生活</h1>
+  <p>分享技术探索、工程实践与日常思考。</p>
+</section>
 
-{% for post in site.posts %}
-<article>
-  <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-  <time>{{ post.date | date: "%Y-%m-%d" }}</time>
-  <p>{{ post.excerpt }}</p>
-</article>
-{% endfor %}
+<div class="divider"><hr></div>
+
+<section class="posts-section">
+  <div class="posts-header">
+    <h2>全部文章</h2>
+    <span class="posts-count">{{ site.posts.size }} 篇</span>
+  </div>
+
+  <div class="post-list">
+    {% for post in site.posts %}
+    <a href="{{ post.url | relative_url }}" class="post-item">
+      <span class="post-date">{{ post.date | date: "%m.%d" }}</span>
+      <div class="post-content">
+        <h3>{{ post.title }}</h3>
+        <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 80 }}</p>
+      </div>
+      <span class="post-arrow">→</span>
+    </a>
+    {% endfor %}
+  </div>
+</section>

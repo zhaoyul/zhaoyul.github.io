@@ -1,9 +1,12 @@
 title: Zhaoyu's Blog
-description: Personal blog
-theme: minima
+description: 技术 · 思考 · 生活
+url: https://zhaoyul.github.io
+baseurl: ""
+
+markdown: kramdown
+kramdown:
+  input: GFM
 
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
-
-markdown: kramdown
