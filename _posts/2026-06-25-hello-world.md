@@ -1,7 +1,10 @@
 ---
 layout: post
-title: Hello World
+title_zh: Hello World
+title_en: Hello World
 ---
+
+<div data-lang="zh" class="active">
 
 这是我的第一篇博客文章。
 
@@ -22,3 +25,29 @@ title: Hello World
 - **读书笔记** — 技术书和非技术书
 
 Stay tuned.
+
+</div>
+
+<div data-lang="en">
+
+This is my first blog post.
+
+Welcome to my personal blog. I'll be sharing technical notes, life reflections, and more here.
+
+## Why Write a Blog?
+
+Writing is the best way to think. When you try to turn a vague idea into clear words, your thinking goes deeper.
+
+> Write it down, not for others to read, but to organize your own thoughts.
+
+## What's Next
+
+Planning to write about:
+
+- **Frontend Engineering** — Build tools, performance optimization
+- **AI Applications** — LLMs, Prompt Engineering
+- **Book Notes** — Both tech and non-tech books
+
+Stay tuned.
+
+</div>
