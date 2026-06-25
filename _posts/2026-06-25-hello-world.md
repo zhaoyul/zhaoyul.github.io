@@ -4,7 +4,7 @@ title_zh: Hello World
 title_en: Hello World
 ---
 
-<div data-lang="zh" class="active">
+<div data-lang="zh" class="active" markdown="1">
 
 这是我的第一篇博客文章。
 
@@ -28,7 +28,7 @@ Stay tuned.
 
 </div>
 
-<div data-lang="en">
+<div data-lang="en" markdown="1">
 
 This is my first blog post.
 
