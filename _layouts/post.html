@@ -112,6 +112,26 @@
     .icon-sun, .icon-moon { display: none; }
     [data-theme="dark"] .icon-sun { display: block; }
     [data-theme="light"] .icon-moon, :not([data-theme]) .icon-moon { display: block; }
+    .lang-toggle {
+      background: none;
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 0.35rem 0.75rem;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: all 0.2s;
+      font-family: var(--font-body);
+    }
+    .lang-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    [data-lang="zh"], [data-lang="en"] { display: none; }
+    [data-lang].active { display: block; }
+    span[data-lang], a[data-lang] { display: none; }
+    span[data-lang].active, a[data-lang].active { display: inline; }
     .post-hero {
       max-width: 720px;
       margin: 0 auto;
@@ -233,6 +253,7 @@
       <a href="{{ '/' | relative_url }}" class="site-title">{{ site.title }}</a>
       <div class="header-nav">
         <span class="site-desc">{{ site.description }}</span>
+        <button class="lang-toggle" onclick="toggleLang()" id="langBtn">EN</button>
         <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -243,9 +264,12 @@
 
   <article>
     <div class="post-hero">
-      <a href="{{ '/' | relative_url }}" class="back-link">← 返回</a>
-      <span class="post-date">{{ page.date | date: "%Y年%m月%d日" }}</span>
-      <h1>{{ page.title }}</h1>
+      <a href="{{ '/' | relative_url }}" class="back-link" data-lang="zh">← 返回</a>
+      <a href="{{ '/' | relative_url }}" class="back-link" data-lang="en">← Back</a>
+      <span class="post-date" data-lang="zh">{{ page.date | date: "%Y年%m月%d日" }}</span>
+      <span class="post-date" data-lang="en">{{ page.date | date: "%B %d, %Y" }}</span>
+      <h1 data-lang="zh">{{ page.title_zh | default: page.title }}</h1>
+      <h1 data-lang="en">{{ page.title_en | default: page.title }}</h1>
     </div>
     <div class="post-body">
       {{ content }}
@@ -275,6 +299,24 @@
       setTheme(getTheme() === 'dark' ? 'light' : 'dark');
     }
     setTheme(getTheme());
+
+    function getLang() {
+      return localStorage.getItem('lang') || 'zh';
+    }
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      applyLang(lang);
+    }
+    function toggleLang() {
+      setLang(getLang() === 'zh' ? 'en' : 'zh');
+    }
+    function applyLang(lang) {
+      document.getElementById('langBtn').textContent = lang === 'zh' ? 'EN' : '中';
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.toggle('active', el.getAttribute('data-lang') === lang);
+      });
+    }
+    applyLang(getLang());
   </script>
 </body>
 </html>
