@@ -45,7 +45,7 @@ R 不是一个单一的东西，它由一组项目技术因素共同决定：
 顺带说一个不太重要但有趣的点。有人用 RosettaCode 上的同一批编程任务做过[一个 token 效率测试](https://martinalderson.com/posts/which-programming-languages-are-most-token-efficient/)：统计同样的任务用不同语言实现各消耗多少 token，Clojure 最省，大约只有最啰嗦的 C 的三分之一。
 
 ![各语言完成相同任务的平均 token 消耗，Clojure 最省]({{ "/assets/images/token-efficiency-chart.png" | relative_url }})
-{: style="display: block; max-width: 560px; width: 100%; margin: 1.5em auto;"}
+{: style="display: block; width: 100%; margin: 1.5em auto;"}
 
 这反映的是 Clojure 语法的精练——token 省一点，上下文窗口就松一点，会话就能长一点。但别把这个看得太重：省 token 是量变，V 和 M 是质变。再精练的黑盒，也还是黑盒。
 
@@ -138,7 +138,7 @@ This is why Clojure is underrated in the LLM era. It happens to max out both of 
 One side note — interesting, but not important. Someone ran [a token-efficiency comparison](https://martinalderson.com/posts/which-programming-languages-are-most-token-efficient/) over the same RosettaCode tasks in 19 languages: Clojure came out cheapest, at roughly a third of the tokens of C, the most verbose.
 
 ![Average tokens per task by language; Clojure is the most token-efficient]({{ "/assets/images/token-efficiency-chart.png" | relative_url }})
-{: style="display: block; max-width: 560px; width: 100%; margin: 1.5em auto;"}
+{: style="display: block; width: 100%; margin: 1.5em auto;"}
 
 That's Clojure's syntactic concision showing — fewer tokens mean a roomier context window and longer sessions. But don't overweight it: saving tokens is quantitative, while V and M are qualitative. A more concise black box is still a black box.
 
